@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Quicksand", sans-serif;
+    background: #f5f5f5;
+}
+
+main {
+    margin: 4rem auto 1em;
+}
+
+.perdin-app_header {
+    background-color: #fff;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 4
+}
+
+.header-item {
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.header-item>h2 {
+    flex: 1 1;
+    font-weight: 400;
+    padding: 10px 16px;
+}
+
+.header-item ul li {
+    display: inline-block;
+    padding: 16px;
+}
+
+.header-item ul li a {
+    text-decoration: none;
+    color: #252525;
+}
+
+.header-item button {
+    background: transparent;
+    color: var(--font-color);
+    font-family: "Inter", sans-serif;
+    border: 0;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-item button:hover,
+.header-item ul li a:hover {
+    text-decoration: underline;
+}
+
+.auth {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.auth-box {
+    display: flex;
+    margin: 1.75rem auto;
+    min-height: calc(100% - 1rem);
+    align-items: center;
+    max-width: 300px;
+}
+
+.auth-acc {
+    border: 2px solid dodgerblue;
+    background-color: white;
+    border-radius: 8px;
+    margin: 16px;
+    padding: 8px;
+    width: 100%;
+}
+
+.auth-acc_header {
+    text-align: center;
+    padding: 8px 8px 16px 8px;
+}
+
+.input-data {
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    padding: 8px;
+}
+
+.input-data input[type=text],
+.input-data input[type=password] {
+    background-color: #fff;
+    border: .5px solid gray;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 8px;
+    width: 100%;
+}
+
+.input-data>button {
+    background-color: #fff;
+    border: .5px solid gray;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 550;
+    margin-top: 16px;
+    padding: 8px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.input-data>button:hover {
+    background-color: dodgerblue;
+    color: white;
+    transition: .1s ease-out;
+}
+
+.forget-btn {
+    text-align: center;
+    text-decoration: none;
+    font-size: .9rem;
+    color: #252525;
+}
+
+.forget-btn:hover {
+    text-decoration: underline;
+    color: dodgerblue;
+}
