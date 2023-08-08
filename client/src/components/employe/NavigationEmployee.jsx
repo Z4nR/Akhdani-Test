@@ -1,12 +1,13 @@
 import React from "react";
 import { FiLogOut } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
-export default function NavigationUser({ logout }) {
+export default function NavigationEmployee({ logout }) {
   return (
     <nav className="navigation">
       <ul>
         <li>
-          <Link to="/perdin-add">Buat Perdin</Link>
+          <Link to="/form-perdin">Buat Perdin</Link>
         </li>
         <li>
           <button onClick={logout}>

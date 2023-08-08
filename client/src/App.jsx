@@ -3,20 +3,22 @@ import Login from "./pages/LoginPage";
 import React, { useEffect, useState } from "react";
 import { getUserLogged, putAccessToken, removeAccessToken } from "./utils/api";
 import Forget from "./pages/utils/ForgotPassword";
-import NavigationUser from "./components/employe/NavigationUser";
-import NavigationAdmin from "./components/admin/Navigation";
-import DashboardAdmin from "./components/admin/Dashboard";
-import DashboardEmployeer from "./components/employe/DashboardUser";
+import CityData from "./pages/MasterCity";
+import Navigation from "./components/Navigation";
+import AddUserForm from "./pages/AddUserForm";
+import CreatePerdin from "./pages/CreatePerdin";
+import DashboardAdmin from "./components/admin/DashboardAdmin";
+import DashboardEmployeer from "./components/employe/DashboardEmployee";
 
 function App() {
   const [authUser, setAuthUser] = useState(null);
-  const [initialize, setInitialize] = useState(null);
+  const [initializing, setInitializing] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     getUserLogged().then(({ logged }) => {
       setAuthUser(logged);
-      setInitialize(false);
+      setInitializing(false);
     });
   }, []);
 
@@ -33,7 +35,7 @@ function App() {
     removeAccessToken();
   };
 
-  if (initialize) {
+  if (initializing) {
     return null;
   }
 
@@ -50,37 +52,33 @@ function App() {
     );
   }
 
-  if (authUser.role === "Pegawai") {
-    return (
-      <div className="perdin-app">
-        <header className="perdin-app_header">
-          <div className="header-item">
-            <h2>Perdin Website</h2>
-            <NavigationUser logout={onLogout} />
-          </div>
-        </header>
-        <main>
-          <Routes>
-            <Route path="/" element={<DashboardEmployeer />} />
-          </Routes>
-        </main>
-      </div>
-    );
-  }
-
   return (
     <div className="perdin-app">
       <header className="perdin-app_header">
         <div className="header-item">
           <h2>Perdin Website</h2>
-          <NavigationAdmin logout={onLogout} role={authUser.role} />
+          <Navigation logout={onLogout} role={authUser.role} />
         </div>
       </header>
-      <main>
-        <Routes>
-          <Route path="/" element={<DashboardAdmin />} />
-        </Routes>
-      </main>
+      {authUser.role === "Pegawai" ? (
+        <main>
+          <Routes>
+            <Route path="/" element={<DashboardEmployeer />} />
+            <Route path="/form-perdin" element={<CreatePerdin />} />
+          </Routes>
+        </main>
+      ) : (
+        <main>
+          <Routes>
+            <Route path="/" element={<DashboardAdmin />} />
+            <Route path="/city" element={<CityData />} />
+            <Route
+              path="/add-user"
+              element={<AddUserForm role={authUser.role} />}
+            />
+          </Routes>
+        </main>
+      )}
     </div>
   );
 }
