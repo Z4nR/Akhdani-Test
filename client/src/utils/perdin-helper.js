@@ -8,7 +8,7 @@ const durationDay = (startDate, endDate) => {
 
   const diffInDays = Math.round(diffInTime / oneDay);
 
-  return `${diffInDays} Hari`;
+  return diffInDays;
 };
 
 const showFormattedDateID = (date) => {
@@ -21,15 +21,15 @@ const showFormattedDateID = (date) => {
 };
 
 const statusMap = {
-  Pending: {
+  Ditinjau: {
     backgroundColor: "lightgoldenrodyellow",
     color: "#c3b112",
   },
-  Approve: {
+  Diterima: {
     backgroundColor: "lightblue",
     color: "blue",
   },
-  Rejected: {
+  Ditolak: {
     backgroundColor: "lightcoral",
     color: "red",
   },

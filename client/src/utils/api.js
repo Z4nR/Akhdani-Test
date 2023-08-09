@@ -112,8 +112,8 @@ const addCityData = async ({ name, lat, long, province, island, aboard }) => {
   return { error: false };
 };
 
-const rangeCityCount = async ({ fromCity, destinationCity }) => {
-  const data = JSON.stringify({ fromCity, destinationCity });
+const rangeCityCount = async (fromCity, destinationCity, duration) => {
+  const data = JSON.stringify({ fromCity, destinationCity, duration });
 
   const response = await fetchWithToken(`${BASE_URL}/city/range`, {
     method: "POST",
@@ -129,7 +129,13 @@ const rangeCityCount = async ({ fromCity, destinationCity }) => {
     return { error: true };
   }
 
-  return { error: false, range: responseJson.range };
+  return {
+    error: false,
+    range: responseJson.range,
+    total: responseJson.total,
+    note: responseJson.note,
+    money: responseJson.money,
+  };
 };
 
 const getCityData = async () => {
@@ -265,6 +271,24 @@ const getAllPerdin = async () => {
   return { error: false, perdin: responseJson };
 };
 
+const processPerdin = async (id, status) => {
+  const response = await fetchWithToken(`${BASE_URL}/perdin/process/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ status }),
+  });
+
+  const responseJson = await response.json();
+  if (response.status !== 202) {
+    alert(responseJson.message);
+    return { error: true };
+  }
+
+  return { error: false };
+};
+
 export {
   putAccessToken,
   removeAccessToken,
@@ -283,4 +307,5 @@ export {
   getPerdinByName,
   getAllPerdin,
   getPerdinById,
+  processPerdin,
 };

@@ -12,10 +12,9 @@ export default function DashboardEmployeer({ name }) {
     });
   }, [name]);
 
-  let selectedStatus = statusMap["Pending"];
-  if (statusMap[dataPerdin.status]) {
-    selectedStatus = statusMap[dataPerdin.status];
-  }
+  let selectedStatus = statusMap["Ditinjau"];
+  if (statusMap[dataPerdin?.status])
+    selectedStatus = statusMap[dataPerdin?.status];
 
   return (
     <div className="perdin-list">
@@ -43,7 +42,9 @@ export default function DashboardEmployeer({ name }) {
                 <div className="perdin-data">
                   {data.startDate} <span style={{ fontSize: "1rem" }}>-</span>{" "}
                   {data.endDate}{" "}
-                  <span style={{ color: "#6f6f6f" }}>({data.durationDay})</span>
+                  <span style={{ color: "#6f6f6f" }}>
+                    ({data.durationDay} Hari)
+                  </span>
                 </div>
               </td>
               <td>

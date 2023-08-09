@@ -40,12 +40,19 @@
     color: dodgerblue;
 }
 
-.perdin-form {
-    width: 60%;
+.perdin-form,
+.user-form {
+    width: 50%;
     background-color: whitesmoke;
     padding: 8px;
     margin: 0 auto;
     border-radius: 8px;
+}
+
+.perdin-form h3,
+.user-form h3 {
+    text-align: center;
+    padding: 1.5rem;
 }
 
 .perdin-box {
@@ -89,7 +96,12 @@
     border-radius: 8px;
 }
 
+.info-data-box {
+    margin-top: 1rem;
+}
+
 .input-data-box,
+.info-data-box,
 .header-input-data {
     display: flex;
 }
@@ -107,7 +119,9 @@
     flex: 1;
 }
 
-.input-data {
+.input-data,
+.info-data,
+.input-approval {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -126,6 +140,7 @@
 .input-data input[type=password],
 .input-data input[type=number],
 .input-data input[type=date],
+.input-data input[type=email],
 .input-data select {
     padding: 8px;
     width: 100%;
@@ -140,12 +155,13 @@
     padding: 8px;
     width: 100%;
     font-size: 16px;
-    background-color: white;
-    border: 0.5px solid gray;
-    border-radius: 4px;
+    border: 1px solid #252525;
+    border-radius: 5px;
+    background-color: dodgerblue;
+    color: white;
+    cursor: pointer;
     font-weight: 550;
     text-transform: uppercase;
-    cursor: pointer;
     transition: 0.4s ease-out;
 }
 

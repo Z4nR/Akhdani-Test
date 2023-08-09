@@ -34,7 +34,7 @@ export default function EditCityData({ closeModal, id }) {
   }, [ID, setValue]);
 
   const onEditCity = async (data) => {
-    const { error } = await editCity(id, data);
+    const { error } = await editCity(ID, data);
 
     if (!error) {
       window.location.reload();

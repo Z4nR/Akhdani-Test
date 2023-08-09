@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllPerdin } from "../../utils/api";
-import { FiEye } from "react-icons/fi";
+import { FiCheckCircle, FiEye } from "react-icons/fi";
 import { statusMap } from "../../utils/perdin-helper";
 import ModalBox from "../../components/admin/modal/ModalBox";
 
@@ -25,10 +25,11 @@ export default function DashboardAdmin() {
     });
   }, []);
 
-  let selectedStatus = statusMap["Pending"];
+  let selectedStatus = statusMap["Ditinjau"];
   if (statusMap[dataPerdin?.status]) {
     selectedStatus = statusMap[dataPerdin?.status];
   }
+  console.log(selectedStatus);
 
   return (
     <div className="perdin-list">
@@ -44,6 +45,7 @@ export default function DashboardAdmin() {
             <th>Tanggal</th>
             <th>Keterangan</th>
             <th>Status</th>
+
             <th>Aksi</th>
           </tr>
         </thead>
@@ -64,13 +66,19 @@ export default function DashboardAdmin() {
                 <div className="perdin-data">
                   {data.startDate} <span style={{ fontSize: "1rem" }}>-</span>{" "}
                   {data.endDate}{" "}
-                  <span style={{ color: "#6f6f6f" }}>({data.durationDay})</span>
+                  <span style={{ color: "#6f6f6f" }}>
+                    ({data.durationDay} Hari)
+                  </span>
                 </div>
               </td>
               <td>
                 <div
                   className="perdin-data"
-                  style={{ width: "300px", textAlign: "justify" }}
+                  style={{
+                    width: "300px",
+                    textAlign: "justify",
+                    height: "auto",
+                  }}
                 >
                   {data.note}
                 </div>
@@ -86,18 +94,26 @@ export default function DashboardAdmin() {
                   {data.status}
                 </div>
               </td>
-              <td>
-                <div className="action-box">
-                  <FiEye
-                    className="edit-btn"
-                    onClick={(event) => {
-                      event.preventDefault();
-                      setPerdinID(data._id);
-                      openModal(3);
-                    }}
-                  />
-                </div>
-              </td>
+              {data.status === "Ditinjau" ? (
+                <td>
+                  <div className="action-box">
+                    <FiEye
+                      className="edit-btn"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        setPerdinID(data._id);
+                        openModal(3);
+                      }}
+                    />
+                  </div>
+                </td>
+              ) : (
+                <td>
+                  <div className="action-box">
+                    <FiCheckCircle />
+                  </div>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

@@ -7,7 +7,7 @@ const perdinSchema = new Schema({
   endDate: { type: String, required: true },
   fromCity: { type: String, required: true },
   destinationCity: { type: String, required: true },
-  durationDay: { type: String, required: true },
+  durationDay: { type: Number, required: true },
   status: { type: String, required: true },
 });
 

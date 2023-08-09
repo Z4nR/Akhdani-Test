@@ -43,5 +43,8 @@ router
 router
   .route("/perdin/:id")
   .get(AuthController.authJWT, PerdinController.getPerdinById);
+router
+  .route("/perdin/process/:id")
+  .patch(AuthController.authJWT, PerdinController.updatePerdin);
 
 module.exports = router;

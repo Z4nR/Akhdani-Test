@@ -18,7 +18,7 @@ export default function CreatePerdin({ name, city }) {
       endDate: "",
       fromCity: "",
       destinationCity: "",
-      status: "Sedang Ditinjau",
+      status: "Ditinjau",
     },
   });
 
@@ -55,10 +55,14 @@ export default function CreatePerdin({ name, city }) {
             <div className="perdin-box">
               <select
                 id="fromCity"
+                name="fromCity"
                 {...register("fromCity", {
                   required: true,
                 })}
               >
+                <option value="" disabled>
+                  Kota Asal
+                </option>
                 {city.map((option) => (
                   <option key={option._id} value={option.name}>
                     {option.name}
@@ -68,10 +72,14 @@ export default function CreatePerdin({ name, city }) {
               <span style={{ fontSize: "1.5rem" }}>&rarr;</span>
               <select
                 id="destinationCity"
+                name="destinationCity"
                 {...register("destinationCity", {
                   required: true,
                 })}
               >
+                <option value="" disabled>
+                  Kota Tujuan
+                </option>
                 {city.map((option) => (
                   <option key={option._id} value={option.name}>
                     {option.name}
@@ -123,8 +131,8 @@ export default function CreatePerdin({ name, city }) {
             <input
               id="note"
               type="text"
-              placeholder="Tambahkan Keterangan"
               autoComplete="off"
+              style={{ height: "100px" }}
               {...register("note", { required: true })}
             />
             {errors.note && <p style={{ color: "red" }}>Harap Diisi</p>}
@@ -132,7 +140,7 @@ export default function CreatePerdin({ name, city }) {
         </div>
         <div className="input-data-box">
           <div className="input-data">
-            <button type="submit">Tambahkan Kota</button>
+            <button type="submit">Buat Permohonan</button>
           </div>
         </div>
       </form>

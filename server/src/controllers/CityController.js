@@ -1,4 +1,4 @@
-const rangeCounter = require("../helpers/rangeCounter");
+const { rangeCount, moneyCounter } = require("../helpers/perdin_helpers");
 const { cityValidate } = require("../helpers/validation");
 const City = require("../models/City"),
   User = require("../models/User");
@@ -131,6 +131,7 @@ module.exports = {
     try {
       const { fromCity } = req.body;
       const { destinationCity } = req.body;
+      const { duration } = req.body;
 
       const fCity = await City.findOne({ name: fromCity });
       const dCity = await City.findOne({ name: destinationCity });
@@ -140,9 +141,19 @@ module.exports = {
       const lat2 = dCity.lat;
       const long2 = dCity.long;
 
-      const range = rangeCounter.rangeCount(lat1, lat2, long1, long2);
+      const prov = fCity.province === dCity.province;
+      const isle = fCity.island === dCity.island;
+      const country = dCity.aboard;
 
-      res.status(200).send({ range });
+      const range = rangeCount(lat1, lat2, long1, long2);
+      const cost = moneyCounter(country, prov, isle, range, duration);
+
+      res.status(200).send({
+        range: `${range} KM`,
+        total: cost.total,
+        note: cost.note,
+        money: cost.cost,
+      });
     } catch (error) {
       console.log(error);
       res.status(500).send({ message: "Internal Server Error" });

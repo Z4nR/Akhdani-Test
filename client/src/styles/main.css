@@ -95,13 +95,9 @@ main {
     padding: 8px;
     border: 1px solid #252525;
     border-radius: 5px;
-    cursor: pointer;
-}
-
-.add-city>button:hover {
     background-color: dodgerblue;
     color: white;
-    transition: .1s ease-out;
+    cursor: pointer;
 }
 
 .action-box {
