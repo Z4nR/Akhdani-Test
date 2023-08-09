@@ -9,7 +9,6 @@ export default function Forget() {
     handleSubmit,
     register,
     formState: { errors },
-    setValue,
   } = useForm({
     defaultValues: {
       email: "",
@@ -20,9 +19,7 @@ export default function Forget() {
   const onForget = async (data) => {
     const { error } = await forgotPassword(data);
 
-    if (!error) {
-      navigate("/");
-    }
+    if (!error) navigate("/");
   };
 
   return (

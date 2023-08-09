@@ -1,0 +1,47 @@
+table {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+thead {
+    background-color: #ddd;
+}
+
+tbody {
+    background-color: #eeeeee;
+}
+
+tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.city-page>table,
+.perdin-list>table {
+    width: 100%;
+    table-layout: auto;
+}
+
+.city-page thead,
+.city-page tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.city-page tbody {
+    display: block;
+    overflow-y: auto;
+}
+
+.city-page th,
+.perdin-list th {
+    padding: 8px;
+}
+
+.city-page td {
+    padding: 1rem;
+}
+
+.perdin-list td {
+    padding: .8rem;
+}

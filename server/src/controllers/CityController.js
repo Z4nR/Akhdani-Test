@@ -1,4 +1,5 @@
-const { cityValidate } = require("../middleware/validation");
+const rangeCounter = require("../helpers/rangeCounter");
+const { cityValidate } = require("../helpers/validation");
 const City = require("../models/City"),
   User = require("../models/User");
 
@@ -63,6 +64,26 @@ module.exports = {
     }
   },
 
+  getCityById: async (req, res) => {
+    const { _id } = req.user;
+    const user = await User.findOne({ _id: _id });
+
+    if (!user) return res.status(401).send({ message: "Invalid User!" });
+    if (user.role === "Pegawai")
+      return res.status(401).send({ message: "Invalid Role!" });
+
+    try {
+      const { id } = req.params;
+
+      const data = await City.findById(id);
+
+      res.status(200).send(data);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ message: "Internal Server Error" });
+    }
+  },
+
   deleteCity: async (req, res) => {
     const { _id } = req.user;
     const user = await User.findOne({ _id: _id });
@@ -93,6 +114,35 @@ module.exports = {
       const city = await City.find();
 
       res.status(200).send(city);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ message: "Internal Server Error" });
+    }
+  },
+
+  getRangeCity: async (req, res) => {
+    const { _id } = req.user;
+    const user = await User.findOne({ _id: _id });
+
+    if (!user) return res.status(401).send({ message: "Invalid User!" });
+    if (user.role === "Pegawai")
+      return res.status(401).send({ message: "Invalid Role!" });
+
+    try {
+      const { fromCity } = req.body;
+      const { destinationCity } = req.body;
+
+      const fCity = await City.findOne({ name: fromCity });
+      const dCity = await City.findOne({ name: destinationCity });
+
+      const lat1 = fCity.lat;
+      const long1 = fCity.long;
+      const lat2 = dCity.lat;
+      const long2 = dCity.long;
+
+      const range = rangeCounter.rangeCount(lat1, lat2, long1, long2);
+
+      res.status(200).send({ range });
     } catch (error) {
       console.log(error);
       res.status(500).send({ message: "Internal Server Error" });

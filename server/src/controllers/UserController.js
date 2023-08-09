@@ -1,4 +1,4 @@
-const { registValidate, loginValidate } = require("../middleware/validation");
+const { registValidate, loginValidate } = require("../helpers/validation");
 const User = require("../models/User"),
   bcrypt = require("bcrypt"),
   jwt = require("jsonwebtoken");

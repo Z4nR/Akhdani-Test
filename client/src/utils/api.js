@@ -85,10 +85,184 @@ const getUserLogged = async () => {
   const responseJson = await response.json();
 
   if (response.status !== 200) {
+    alert(responseJson.message);
     return { error: true, data: null };
   }
 
   return { error: false, logged: responseJson };
+};
+
+const addCityData = async ({ name, lat, long, province, island, aboard }) => {
+  const data = JSON.stringify({ name, lat, long, province, island, aboard });
+
+  const response = await fetchWithToken(`${BASE_URL}/city/add`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  });
+
+  const responseJson = await response.json();
+  if (response.status !== 201) {
+    alert(responseJson.message);
+    return { error: true };
+  }
+
+  return { error: false };
+};
+
+const rangeCityCount = async ({ fromCity, destinationCity }) => {
+  const data = JSON.stringify({ fromCity, destinationCity });
+
+  const response = await fetchWithToken(`${BASE_URL}/city/range`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  });
+
+  const responseJson = await response.json();
+  if (response.status !== 200) {
+    alert(responseJson.message);
+    return { error: true };
+  }
+
+  return { error: false, range: responseJson.range };
+};
+
+const getCityData = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/city/data`);
+  const responseJson = await response.json();
+
+  if (response.status !== 200) {
+    alert(responseJson.message);
+    return { error: true, data: null };
+  }
+
+  return { error: false, city: responseJson };
+};
+
+const editCity = async (id, { name, lat, long, province, island, aboard }) => {
+  const data = JSON.stringify({ name, lat, long, province, island, aboard });
+
+  const response = await fetchWithToken(`${BASE_URL}/city/update/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  });
+
+  const responseJson = await response.json();
+  if (response.status !== 202) {
+    alert(responseJson.message);
+    return { error: true };
+  }
+
+  return { error: false };
+};
+
+const getCityById = async (id) => {
+  const response = await fetchWithToken(`${BASE_URL}/city/data/${id}`);
+  const responseJson = await response.json();
+
+  if (response.status !== 200) {
+    alert(responseJson.message);
+    return { error: true, data: null };
+  }
+
+  return { error: false, city: responseJson };
+};
+
+const deleteCity = async (id) => {
+  const response = await fetchWithToken(`${BASE_URL}/city/delete/${id}`, {
+    method: "DELETE",
+  });
+
+  const responseJson = await response.json();
+
+  if (response.status !== 200) {
+    alert(responseJson.message);
+    return { error: true, data: null };
+  }
+
+  return { error: false };
+};
+
+const createPerdin = async ({
+  name,
+  note,
+  startDate,
+  endDate,
+  fromCity,
+  destinationCity,
+  durationDay,
+  status,
+}) => {
+  const data = JSON.stringify({
+    name,
+    note,
+    startDate,
+    endDate,
+    fromCity,
+    destinationCity,
+    durationDay,
+    status,
+  });
+
+  const response = await fetchWithToken(`${BASE_URL}/perdin/create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  });
+
+  const responseJson = await response.json();
+  if (response.status !== 201) {
+    alert(responseJson.message);
+    return { error: true };
+  }
+
+  return { error: false };
+};
+
+const getPerdinByName = async (name) => {
+  const response = await fetchWithToken(`${BASE_URL}/perdin/${name}/data`);
+  const responseJson = await response.json();
+
+  if (response.status !== 200) {
+    alert(responseJson.message);
+    return { error: true, data: null };
+  }
+
+  return { error: false, perdin: responseJson };
+};
+
+const getPerdinById = async (id) => {
+  const response = await fetchWithToken(`${BASE_URL}/perdin/${id}`);
+  const responseJson = await response.json();
+
+  if (response.status !== 200) {
+    alert(responseJson.message);
+    return { error: true, data: null };
+  }
+
+  return { error: false, perdin: responseJson };
+};
+
+const getAllPerdin = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/perdin/data`);
+  const responseJson = await response.json();
+
+  if (response.status !== 200) {
+    alert(responseJson.message);
+    return { error: true, data: null };
+  }
+
+  return { error: false, perdin: responseJson };
 };
 
 export {
@@ -99,4 +273,14 @@ export {
   login,
   forgotPassword,
   getUserLogged,
+  addCityData,
+  rangeCityCount,
+  getCityData,
+  getCityById,
+  editCity,
+  deleteCity,
+  createPerdin,
+  getPerdinByName,
+  getAllPerdin,
+  getPerdinById,
 };

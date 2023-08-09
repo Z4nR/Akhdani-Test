@@ -3,9 +3,6 @@ import NavigationEmployee from "./employe/NavigationEmployee";
 import NavigationAdmin from "./admin/NavigationAdmin";
 
 export default function Navigation({ logout, role }) {
-  return role === "Pegawai" ? (
-    <NavigationEmployee logout={logout} />
-  ) : (
-    <NavigationAdmin logout={logout} />
-  );
+  if (role === "Pegawai") return <NavigationEmployee logout={logout} />;
+  return <NavigationAdmin logout={logout} />;
 }

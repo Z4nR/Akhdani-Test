@@ -30,7 +30,7 @@ module.exports = {
       long: Joi.number().required().label("City Longitude"),
       province: Joi.string().required().label("City Province"),
       island: Joi.string().required().label("City Island"),
-      domestic: Joi.boolean().required().label("City Country"),
+      aboard: Joi.boolean().required().label("City Country"),
     });
 
     return schema.validate(data);

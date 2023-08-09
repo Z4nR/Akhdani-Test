@@ -7,6 +7,9 @@ export default function NavigationEmployee({ logout }) {
     <nav className="navigation">
       <ul>
         <li>
+          <Link to="/">Daftar Perdin</Link>
+        </li>
+        <li>
           <Link to="/form-perdin">Buat Perdin</Link>
         </li>
         <li>

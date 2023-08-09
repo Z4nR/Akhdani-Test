@@ -7,10 +7,13 @@ export default function NavigationAdmin({ logout }) {
     <nav className="navigation">
       <ul>
         <li>
+          <Link to="/">Daftar Perdin</Link>
+        </li>
+        <li>
           <Link to="/add-user">Tambahkan Pengguna</Link>
         </li>
         <li>
-          <Link to="/city-data">Data Kota</Link>
+          <Link to="/city">Data Kota</Link>
         </li>
         <li>
           <button onClick={logout}>

@@ -8,7 +8,6 @@ export default function Login({ loginSuccess }) {
     handleSubmit,
     register,
     formState: { errors },
-    setValue,
   } = useForm({
     defaultValues: {
       username: "",
@@ -19,9 +18,7 @@ export default function Login({ loginSuccess }) {
   const onLogin = async (data) => {
     const { error, token } = await login(data);
 
-    if (!error) {
-      loginSuccess(token);
-    }
+    if (!error) loginSuccess(token);
   };
 
   return (
