@@ -44,7 +44,7 @@ module.exports = {
       endDate: Joi.string().required().label("Perdin End Date"),
       fromCity: Joi.string().required().label("Perdin From City"),
       destinationCity: Joi.string().required().label("Perdin Destinaiton City"),
-      durationDay: Joi.number().required().label("Perdin Duration"),
+      durationDay: Joi.number().min(1).required().label("Perdin Duration"),
       status: Joi.string().required().label("Perdin Status"),
     });
 

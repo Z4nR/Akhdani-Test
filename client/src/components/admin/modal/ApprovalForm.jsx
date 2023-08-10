@@ -135,14 +135,14 @@ export default function ApprovalForm({ closeModal, id }) {
         <div className="info-data-box">
           <div className="info-data cost-table">
             <table>
-              <thead>
+              <thead style={{ backgroundColor: "#7db3e7" }}>
                 <tr>
                   <th>Total Hari</th>
                   <th>Jarak Tempuh</th>
                   <th>Total Uang Perdin</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody style={{ backgroundColor: "#d5f5ff" }}>
                 <tr>
                   <td>
                     <h3>{costData?.duration} Hari</h3>

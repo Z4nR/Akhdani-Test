@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { durationDay, showFormattedDateID } from "../../utils/perdin-helper";
 import { createPerdin } from "../../utils/api";
@@ -6,11 +6,16 @@ import { useNavigate } from "react-router-dom";
 
 export default function CreatePerdin({ name, city }) {
   const navigate = useNavigate();
+  const [day, setDay] = useState(0);
+
+  console.log(day);
 
   const {
     handleSubmit,
+    watch,
     register,
     formState: { errors },
+    setValue,
   } = useForm({
     defaultValues: {
       note: "",
@@ -18,25 +23,37 @@ export default function CreatePerdin({ name, city }) {
       endDate: "",
       fromCity: "",
       destinationCity: "",
+      durationDay: "",
       status: "Ditinjau",
     },
   });
 
+  const watchStart = watch("startDate");
+  const watchEnd = watch("endDate");
+
+  useEffect(() => {
+    const time = durationDay(watchStart, watchEnd);
+    Number.isNaN(time) ? setDay(0) : setDay(time);
+
+    setValue("durationDay", time);
+  }, [setValue, watchStart, watchEnd]);
+
   const onCreatePerdin = async (data) => {
-    const duration = durationDay(data.startDate, data.endDate);
     const start = showFormattedDateID(data.startDate);
     const end = showFormattedDateID(data.endDate);
 
     const perdin = {
-      name: name,
-      note: data.note,
       startDate: start,
       endDate: end,
       fromCity: data.fromCity,
       destinationCity: data.destinationCity,
-      durationDay: duration,
+      durationDay: data.durationDay,
       status: data.status,
+      note: data.note,
+      name: name,
     };
+
+    console.log(perdin);
 
     const { error } = await createPerdin(perdin);
 
@@ -139,6 +156,24 @@ export default function CreatePerdin({ name, city }) {
               {...register("note", { required: true })}
             />
             {errors.note && <p style={{ color: "red" }}>Harap Diisi</p>}
+          </div>
+        </div>
+        <div className="info-data-box">
+          <div className="info-data cost-table">
+            <table>
+              <thead style={{ backgroundColor: "#7db3e7" }}>
+                <tr>
+                  <th>Total Hari</th>
+                </tr>
+              </thead>
+              <tbody style={{ backgroundColor: "#d5f5ff" }}>
+                <tr>
+                  <td>
+                    <h1>{day} Hari</h1>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         <div className="input-data-box">

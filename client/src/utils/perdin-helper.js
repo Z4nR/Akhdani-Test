@@ -8,6 +8,8 @@ const durationDay = (startDate, endDate) => {
 
   const diffInDays = Math.round(diffInTime / oneDay);
 
+  if (diffInDays < 0) return 0;
+
   return diffInDays;
 };
 
