@@ -4,6 +4,7 @@ import { FiCheckCircle, FiEye } from "react-icons/fi";
 import { statusMap } from "../../utils/perdin-helper";
 import ModalBox from "../../components/admin/modal/ModalBox";
 import { GrClose } from "react-icons/gr";
+import ApprovalBtn from "../../components/admin/btn/ApprovalBtn";
 
 export default function DashboardAdmin() {
   const [dataPerdin, setDataPerdin] = useState(null);
@@ -86,34 +87,14 @@ export default function DashboardAdmin() {
                   {data.status}
                 </div>
               </td>
-              {data.status === "Ditinjau" && (
-                <td>
-                  <div className="action-box">
-                    <FiEye
-                      className="edit-btn"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        setPerdinID(data._id);
-                        openModal(3);
-                      }}
-                    />
-                  </div>
-                </td>
-              )}
-              {data.status === "Diterima" && (
-                <td>
-                  <div className="approval-box">
-                    <FiCheckCircle />
-                  </div>
-                </td>
-              )}
-              {data.status === "Ditolak" && (
-                <td>
-                  <div className="approval-box">
-                    <GrClose />
-                  </div>
-                </td>
-              )}
+              <td>
+                <ApprovalBtn
+                  status={data.status}
+                  setPerdin={setPerdinID}
+                  id={data._id}
+                  openModal={openModal}
+                />
+              </td>
             </tr>
           ))}
         </tbody>
