@@ -128,11 +128,14 @@ export default function CreatePerdin({ name, city }) {
         <div className="input-data-box">
           <div className="input-data">
             <label htmlFor="note">Keterangan</label>
-            <input
+            <textarea
               id="note"
               type="text"
               autoComplete="off"
-              style={{ height: "100px" }}
+              placeholder="Masukan Keterangan Perjalanan Dinas"
+              maxLength="500"
+              rows="5"
+              cols="30"
               {...register("note", { required: true })}
             />
             {errors.note && <p style={{ color: "red" }}>Harap Diisi</p>}

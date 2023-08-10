@@ -152,7 +152,11 @@
 .input-data input[type=number],
 .input-data input[type=date],
 .input-data input[type=email],
+.input-data textarea,
+.perdin-data-form input[type=text],
+.perdin-data-form textarea,
 .input-data select {
+    font-family: "Quicksand", sans-serif;
     padding: 8px;
     width: 100%;
     font-size: 16px;
@@ -161,13 +165,21 @@
     border-radius: 4px;
 }
 
-.perdin-data-form input[type=text] {
-    padding: 8px;
-    width: 100%;
-    font-size: 16px;
+.input-data input[type=text],
+.input-data input[type=password],
+.input-data input[type=number],
+.input-data input[type=date],
+.input-data input[type=email],
+.input-data textarea,
+.input-data select {
+    background-color: white;
+    border: 0.5px solid gray;
+}
+
+.perdin-data-form input[type=text],
+.perdin-data-form textarea {
     background-color: #ddd;
     border: 0.5px solid gray;
-    border-radius: 4px;
 }
 
 .input-data button {

@@ -12,13 +12,12 @@ export default function DashboardEmployeer({ name }) {
     });
   }, [name]);
 
-  let selectedStatus = statusMap["Ditinjau"];
-  if (statusMap[dataPerdin?.status])
-    selectedStatus = statusMap[dataPerdin?.status];
-
   return (
     <div className="perdin-list">
       <h3>Daftar Permohonan Perjalanan Dinas {name}</h3>
+      <div className="refresh-btn">
+        <button onClick={() => window.location.reload()}>Segarkan Data</button>
+      </div>
       <table>
         <thead>
           <tr>
@@ -60,8 +59,8 @@ export default function DashboardEmployeer({ name }) {
                 <div
                   className="perdin-status"
                   style={{
-                    backgroundColor: selectedStatus.backgroundColor,
-                    color: selectedStatus.color,
+                    backgroundColor: statusMap[data.status].backgroundColor,
+                    color: statusMap[data.status].color,
                     textAlign: "center",
                   }}
                 >

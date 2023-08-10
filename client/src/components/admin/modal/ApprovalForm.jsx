@@ -69,7 +69,7 @@ export default function ApprovalForm({ closeModal, id }) {
             <input
               id="name"
               type="text"
-              readOnly
+              disabled
               {...register("name", { required: true })}
             />
           </div>
@@ -81,7 +81,7 @@ export default function ApprovalForm({ closeModal, id }) {
               <input
                 id="fromCity"
                 type="text"
-                readOnly
+                disabled
                 {...register("fromCity", {
                   required: true,
                 })}
@@ -90,7 +90,7 @@ export default function ApprovalForm({ closeModal, id }) {
               <input
                 id="destinationCity"
                 type="text"
-                readOnly
+                disabled
                 {...register("destinationCity", {
                   required: true,
                 })}
@@ -105,14 +105,14 @@ export default function ApprovalForm({ closeModal, id }) {
               <input
                 id="startDate"
                 type="text"
-                readOnly
+                disabled
                 {...register("startDate", { required: true })}
               />
               <span style={{ fontSize: "1.5rem" }}>&rarr;</span>
               <input
                 id="endDate"
                 type="text"
-                readOnly
+                disabled
                 {...register("endDate", { required: true })}
               />
             </div>
@@ -121,11 +121,13 @@ export default function ApprovalForm({ closeModal, id }) {
         <div className="input-data-box">
           <div className="perdin-data-form">
             <label htmlFor="note">Keterangan</label>
-            <input
+            <textarea
               id="note"
               type="text"
-              style={{ height: "auto", wordBreak: "break-all" }}
-              readOnly
+              autoComplete="off"
+              rows="5"
+              cols="30"
+              disabled
               {...register("note", { required: true })}
             />
           </div>
