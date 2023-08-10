@@ -22,6 +22,7 @@ export default function DashboardEmployeer({ name }) {
       <table>
         <thead>
           <tr>
+            <th>#</th>
             <th>Kota</th>
             <th>Tanggal</th>
             <th>Keterangan</th>
@@ -29,17 +30,20 @@ export default function DashboardEmployeer({ name }) {
           </tr>
         </thead>
         <tbody>
-          {dataPerdin?.map((data) => (
+          {dataPerdin?.map((data, index) => (
             <tr key={data._id}>
-              <td>
-                <div className="perdin-data">
+              <td className="perdin-data">
+                <div>{index + 1}</div>
+              </td>
+              <td className="perdin-data">
+                <div>
                   {data.fromCity}{" "}
                   <span style={{ fontSize: "1rem" }}>&rarr;</span>{" "}
                   {data.destinationCity}
                 </div>
               </td>
-              <td>
-                <div className="perdin-data">
+              <td className="perdin-data">
+                <div>
                   {data.startDate} <span style={{ fontSize: "1rem" }}>-</span>{" "}
                   {data.endDate}{" "}
                   <span style={{ color: "#6f6f6f" }}>
@@ -47,20 +51,18 @@ export default function DashboardEmployeer({ name }) {
                   </span>
                 </div>
               </td>
-              <td>
-                <div
-                  className="perdin-data"
-                  style={{ width: "300px", textAlign: "justify" }}
-                >
+              <td className="perdin-data">
+                <div style={{ width: "300px", textAlign: "justify" }}>
                   {data.note}
                 </div>
               </td>
               <td>
                 <div
-                  className="perdin-data perdin-status"
+                  className="perdin-status"
                   style={{
                     backgroundColor: selectedStatus.backgroundColor,
                     color: selectedStatus.color,
+                    textAlign: "center",
                   }}
                 >
                   {data.status}

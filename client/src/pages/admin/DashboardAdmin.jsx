@@ -3,6 +3,7 @@ import { getAllPerdin } from "../../utils/api";
 import { FiCheckCircle, FiEye } from "react-icons/fi";
 import { statusMap } from "../../utils/perdin-helper";
 import ModalBox from "../../components/admin/modal/ModalBox";
+import { GrClose } from "react-icons/gr";
 
 export default function DashboardAdmin() {
   const [dataPerdin, setDataPerdin] = useState(null);
@@ -25,12 +26,6 @@ export default function DashboardAdmin() {
     });
   }, []);
 
-  let selectedStatus = statusMap["Ditinjau"];
-  if (statusMap[dataPerdin?.status]) {
-    selectedStatus = statusMap[dataPerdin?.status];
-  }
-  console.log(selectedStatus);
-
   return (
     <div className="perdin-list">
       {isModalShowed && (
@@ -40,30 +35,33 @@ export default function DashboardAdmin() {
       <table>
         <thead>
           <tr>
+            <th>#</th>
             <th>Nama</th>
             <th>Kota</th>
             <th>Tanggal</th>
             <th>Keterangan</th>
             <th>Status</th>
-
             <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
-          {dataPerdin?.map((data) => (
+          {dataPerdin?.map((data, index) => (
             <tr key={data._id}>
-              <td>
-                <div className="perdin-data">{data.name}</div>
+              <td className="perdin-data">
+                <div>{index + 1}</div>
               </td>
-              <td>
-                <div className="perdin-data">
+              <td className="perdin-data">
+                <div>{data.name}</div>
+              </td>
+              <td className="perdin-data">
+                <div>
                   {data.fromCity}{" "}
                   <span style={{ fontSize: "1rem" }}>&rarr;</span>{" "}
                   {data.destinationCity}
                 </div>
               </td>
-              <td>
-                <div className="perdin-data">
+              <td className="perdin-data">
+                <div>
                   {data.startDate} <span style={{ fontSize: "1rem" }}>-</span>{" "}
                   {data.endDate}{" "}
                   <span style={{ color: "#6f6f6f" }}>
@@ -71,30 +69,24 @@ export default function DashboardAdmin() {
                   </span>
                 </div>
               </td>
-              <td>
-                <div
-                  className="perdin-data"
-                  style={{
-                    width: "300px",
-                    textAlign: "justify",
-                    height: "auto",
-                  }}
-                >
-                  {data.note}
+              <td className="perdin-data">
+                <div className="perdin-data-note">
+                  <p>{data.note}</p>
                 </div>
               </td>
               <td>
                 <div
-                  className="perdin-data perdin-status"
+                  className="perdin-status"
                   style={{
-                    backgroundColor: selectedStatus.backgroundColor,
-                    color: selectedStatus.color,
+                    backgroundColor: statusMap[data.status].backgroundColor,
+                    color: statusMap[data.status].color,
+                    textAlign: "center",
                   }}
                 >
                   {data.status}
                 </div>
               </td>
-              {data.status === "Ditinjau" ? (
+              {data.status === "Ditinjau" && (
                 <td>
                   <div className="action-box">
                     <FiEye
@@ -107,10 +99,18 @@ export default function DashboardAdmin() {
                     />
                   </div>
                 </td>
-              ) : (
+              )}
+              {data.status === "Diterima" && (
                 <td>
-                  <div className="action-box">
+                  <div className="approval-box">
                     <FiCheckCircle />
+                  </div>
+                </td>
+              )}
+              {data.status === "Ditolak" && (
+                <td>
+                  <div className="approval-box">
+                    <GrClose />
                   </div>
                 </td>
               )}

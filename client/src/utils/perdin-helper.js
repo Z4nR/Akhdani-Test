@@ -22,15 +22,15 @@ const showFormattedDateID = (date) => {
 
 const statusMap = {
   Ditinjau: {
-    backgroundColor: "lightgoldenrodyellow",
-    color: "#c3b112",
+    backgroundColor: "#ffff51",
+    color: "#a39309",
   },
   Diterima: {
     backgroundColor: "lightblue",
     color: "blue",
   },
   Ditolak: {
-    backgroundColor: "lightcoral",
+    backgroundColor: "lightpink",
     color: "red",
   },
 };

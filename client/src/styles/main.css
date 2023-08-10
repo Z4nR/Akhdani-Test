@@ -73,12 +73,20 @@ main {
 }
 
 .perdin-data {
+    vertical-align: top;
     font-size: .9rem;
 }
 
+.perdin-data-note {
+    width: 300px;
+    text-align: justify;
+}
+
 .perdin-status {
+    font-size: .9rem;
     padding: 5px;
     border-radius: 20px;
+    word-break: break-all;
 }
 
 .city-page>h1 {
@@ -100,7 +108,8 @@ main {
     cursor: pointer;
 }
 
-.action-box {
+.action-box,
+.approval-box {
     display: flex;
     gap: 1rem;
     justify-content: center;
@@ -116,5 +125,9 @@ main {
 
 .action-box>svg {
     cursor: pointer;
+}
+
+.approval-box>svg,
+.action-box>svg {
     font-size: 1.25rem;
 }

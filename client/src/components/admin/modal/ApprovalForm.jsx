@@ -55,7 +55,7 @@ export default function ApprovalForm({ closeModal, id }) {
   };
 
   return (
-    <div className="perdin-form">
+    <div className="approval-form">
       <div className="header-input-data">
         <h3>Detil Perjalanan Dinas</h3>
         <div className="icon-close">
@@ -64,7 +64,7 @@ export default function ApprovalForm({ closeModal, id }) {
       </div>
       <form>
         <div className="input-data-box">
-          <div className="input-data">
+          <div className="perdin-data-form">
             <label htmlFor="name">Nama Pemohon</label>
             <input
               id="name"
@@ -75,7 +75,7 @@ export default function ApprovalForm({ closeModal, id }) {
           </div>
         </div>
         <div className="input-data-box">
-          <div className="input-data">
+          <div className="perdin-data-form">
             <label htmlFor="startDate">Kota</label>
             <div className="perdin-box">
               <input
@@ -99,7 +99,7 @@ export default function ApprovalForm({ closeModal, id }) {
           </div>
         </div>
         <div className="input-data-box">
-          <div className="input-data">
+          <div className="perdin-data-form">
             <label htmlFor="startDate">Tanggal</label>
             <div className="perdin-box">
               <input
@@ -119,19 +119,19 @@ export default function ApprovalForm({ closeModal, id }) {
           </div>
         </div>
         <div className="input-data-box">
-          <div className="input-data">
+          <div className="perdin-data-form">
             <label htmlFor="note">Keterangan</label>
             <input
               id="note"
               type="text"
-              style={{ height: "100px" }}
+              style={{ height: "auto", wordBreak: "break-all" }}
               readOnly
               {...register("note", { required: true })}
             />
           </div>
         </div>
         <div className="info-data-box">
-          <div className="info-data">
+          <div className="info-data cost-table">
             <table>
               <thead>
                 <tr>
@@ -163,6 +163,7 @@ export default function ApprovalForm({ closeModal, id }) {
         <div className="input-data-box">
           <div className="input-approval">
             <button
+              style={{ backgroundColor: "red", color: "white" }}
               onClick={(event) => {
                 event.preventDefault();
                 onApprovePerdin(false);

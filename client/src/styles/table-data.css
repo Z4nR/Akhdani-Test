@@ -1,10 +1,12 @@
 table {
     border-collapse: collapse;
-    text-align: center;
+    width: 100%;
+    table-layout: auto;
 }
 
 thead {
     background-color: #ddd;
+    text-align: center;
 }
 
 tbody {
@@ -15,14 +17,14 @@ tr {
     border-bottom: 1px solid #ddd;
 }
 
-.city-page>table,
-.perdin-list>table {
-    width: 100%;
-    table-layout: auto;
+.cost-table tbody {
+    text-align: center;
 }
 
 .city-page thead,
-.city-page tbody tr {
+.city-page tbody tr,
+.cost-table thead,
+.cost-table tbody tr {
     display: table;
     width: 100%;
     table-layout: fixed;
