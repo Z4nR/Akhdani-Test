@@ -8,8 +8,6 @@ export default function CreatePerdin({ name, city }) {
   const navigate = useNavigate();
   const [day, setDay] = useState(0);
 
-  console.log(day);
-
   const {
     handleSubmit,
     watch,

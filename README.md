@@ -21,4 +21,4 @@ Data environment yang diperlukan terdapat pada file .env
 
 # Info
 
-- [Github Project](https://github.com/Z4nR/Akhdani-Test)
+[Github Project](https://github.com/Z4nR/Akhdani-Test)

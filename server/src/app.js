@@ -6,7 +6,13 @@ const express = require("express"),
 
 require("dotenv").config();
 
+const env = process.env.NODE_ENV;
 const port = process.env.PORT || 5500;
+
+//Handling Console.log
+if (env !== "development") {
+  console.log = function () {};
+}
 
 //Middleware
 app.use(bodyParser.json());
