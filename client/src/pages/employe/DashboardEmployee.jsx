@@ -51,7 +51,13 @@ export default function DashboardEmployeer({ name }) {
                 </div>
               </td>
               <td className="perdin-data">
-                <div style={{ width: "300px", textAlign: "justify" }}>
+                <div
+                  style={{
+                    width: "300px",
+                    textAlign: "justify",
+                    margin: "0 auto",
+                  }}
+                >
                   {data.note}
                 </div>
               </td>

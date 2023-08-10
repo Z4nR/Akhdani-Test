@@ -2,11 +2,11 @@ table {
     border-collapse: collapse;
     width: 100%;
     table-layout: auto;
+    text-align: center;
 }
 
 thead {
     background-color: #ddd;
-    text-align: center;
 }
 
 tbody {
@@ -17,9 +17,6 @@ tr {
     border-bottom: 1px solid #ddd;
 }
 
-.cost-table tbody {
-    text-align: center;
-}
 
 .city-page thead,
 .city-page tbody tr,
