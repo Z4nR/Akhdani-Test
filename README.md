@@ -18,3 +18,7 @@ Projek ini memiliki 3 jenis role dalam proses penggunaan website, yaitu:
 # Environment
 
 Data environment yang diperlukan terdapat pada file .env
+
+# Info
+
+- [Github Project](https://github.com/Z4nR/Akhdani-Test)
