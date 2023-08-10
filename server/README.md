@@ -2,32 +2,42 @@
 
 Folder ini berisikan berbagai berkas yang digunakan untuk menghubungkan ke database dan membangun server yang berisi fungsi yang berguna dalam penggunaannya pada website perjalanan dinas.
 
+## Installation
+
+Install projek ini secara lokal menggunakan npm
+
+```bash
+  cd server
+  npm install
+  npm run server
+```
+
 ## API Reference
 
 ### User
 
 #### Regist user
 
-```http
+```bash
   POST /user/regist
 ```
 
 #### Login user
 
-```http
+```bash
   POST /user/login
 ```
 
 #### Logged user
 
-```http
+```bash
   GET /user/me
   Authorization
 ```
 
 #### Forget password
 
-```http
+```bash
   PATCH /user/forget-password/${email}
 ```
 
@@ -39,14 +49,14 @@ Folder ini berisikan berbagai berkas yang digunakan untuk menghubungkan ke datab
 
 #### Create Perdin
 
-```http
+```bash
   POST /perdin/create
   Authorization
 ```
 
 #### Get Perdin By Name
 
-```http
+```bash
   GET /perdin/:name/data
   Authorization
 ```
@@ -57,14 +67,14 @@ Folder ini berisikan berbagai berkas yang digunakan untuk menghubungkan ke datab
 
 #### Get All Perdin
 
-```http
+```bash
   GET /perdin/data
   Authorization
 ```
 
 #### Get Perdin By Id
 
-```http
+```bash
   GET /perdin/${id}
   Authorization
 ```
@@ -75,7 +85,7 @@ Folder ini berisikan berbagai berkas yang digunakan untuk menghubungkan ke datab
 
 #### Update Perdin Status
 
-```http
+```bash
   PATCH /perdin/process/${id}
   Authorization
 ```
@@ -88,28 +98,28 @@ Folder ini berisikan berbagai berkas yang digunakan untuk menghubungkan ke datab
 
 #### Add City
 
-```http
+```bash
   POST /city/add
   Authorization
 ```
 
 #### Get All City Data
 
-```http
+```bash
   GET /city/data
   Authorization
 ```
 
 #### Count Range Between Two City
 
-```http
+```bash
   POST /city/range
   Authorization
 ```
 
 #### Get City Data By Id
 
-```http
+```bash
   GET /city/data/${id}
   Authorization
 ```
@@ -120,7 +130,7 @@ Folder ini berisikan berbagai berkas yang digunakan untuk menghubungkan ke datab
 
 #### Update City Data
 
-```http
+```bash
   PATCH /city/update/${id}
   Authorization
 ```
@@ -131,7 +141,7 @@ Folder ini berisikan berbagai berkas yang digunakan untuk menghubungkan ke datab
 
 #### Delete City
 
-```http
+```bash
   DELETE /city/delete/${id}
   Authorization
 ```
