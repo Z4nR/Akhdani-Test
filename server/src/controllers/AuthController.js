@@ -9,7 +9,9 @@ module.exports = {
 
       jwt.verify(token, process.env.JWT_KEY, (err, user) => {
         if (err) {
-          return res.status(403);
+          console.log(err);
+          const data = "Invalid Token Structure";
+          return res.status(403).send({ data: data });
         }
         req.user = user;
         next();

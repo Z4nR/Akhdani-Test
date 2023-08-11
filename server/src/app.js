@@ -10,7 +10,7 @@ const env = process.env.NODE_ENV;
 const port = process.env.PORT || 5500;
 
 //Handling Console.log
-if (env !== "development") {
+if (env === "development") {
   console.log = function () {};
 }
 

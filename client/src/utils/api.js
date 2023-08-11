@@ -85,8 +85,7 @@ const getUserLogged = async () => {
   const responseJson = await response.json();
 
   if (response.status !== 200) {
-    alert(responseJson.message);
-    return { error: true, data: null };
+    return { error: true, logged: null };
   }
 
   return { error: false, logged: responseJson };
@@ -143,8 +142,7 @@ const getCityData = async () => {
   const responseJson = await response.json();
 
   if (response.status !== 200) {
-    alert(responseJson.message);
-    return { error: true, data: null };
+    return { error: true, city: null };
   }
 
   return { error: false, city: responseJson };
